@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+  @if (session('flash_message'))
+  <div class="flash_message" onclick="this.classList.add('hidden')">{{ session('flash_message') }}</div>
+  @endif
   <div class="container">
     @yield('content')
   </div>

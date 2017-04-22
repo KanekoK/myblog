@@ -18,3 +18,6 @@
 Route::get('/', 'PostsController@index');
 Route::get('/posts/create', 'PostsController@create');
 Route::get('/posts/{id}', 'PostsController@show');
+Route::get('/posts/{id}/edit', 'PostsController@edit');
+Route::post('/posts', 'PostsController@store');
+Route::patch('/posts/{id}', 'PostsController@update');
