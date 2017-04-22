@@ -19,3 +19,12 @@ h1 {
 ul > li {
   padding: 3px 0;
 }
+
+.pull-right {
+  float: right;
+}
+
+.fs12 {
+  font-size: 12px;
+  font-weight: normal;
+}
