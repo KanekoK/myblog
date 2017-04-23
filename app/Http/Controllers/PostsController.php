@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\Http\Requests\PostRequest;
+use Illuminate\Foundation\Http\FormRequest;
+// use Illuminate\Foundation\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
@@ -26,11 +27,17 @@ class PostsController extends Controller
         return view('posts.edit')->with('post', $post);
     }
 
+    public function destroy($id) {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/')->with('flash_message', 'Post Deleted!');
+    }
+
     public function create() {
         return view('posts.create');
     }
 
-    public function store(PostRequest $request) {
+    public function store(Request $request) {
         $this->validate($request,[
             'title' => 'required|min:3',
             'body'  => 'required'
@@ -42,7 +49,7 @@ class PostsController extends Controller
         return redirect('/')->with('flash_message', 'Post Added!');
     }
 
-    public function update(PostRequest $request, $id) {
+    public function update(Request $request, $id) {
         $this->validate($request,[
             'title' => 'required|min:3',
             'body'  => 'required'

@@ -9,9 +9,9 @@ Edit Post
     <a href="{{ url('/') }}" class="pull-right fs12">Back</a>
     Edit Post
 </h1>
-<form action="{{ url('/posts'), $post->id }}" method="post">
+<form method="post" action="{{ url('/posts', $post->id) }}">
     {{ csrf_field() }}
-    {!! method_field('patch') !!}
+    {{ method_field('patch') }}
     <p>
         <input type="text" name="title" placeholder="title" value="{{ old('title', $post->title) }}">
         @if ($errors->has('title'))
